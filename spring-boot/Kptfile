@@ -1,0 +1,8 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: spring-boot
+packageMetadata:
+  tags:
+  - kpt.dev/app=springboot
+  shortDescription: kpt spring boot backage
