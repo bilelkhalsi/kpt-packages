@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spring-boot-ingress
+  labels:
+    app: spring-boot # {"$kpt-set":"service-name"}
+    tier: backend
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: spring.boot.com
+    http:
+      paths:
+      - path: /api
+        backend:
+          serviceName: spring-boot # {"$kpt-set":"service-name"}
+          ServicePort: 80        

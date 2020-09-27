@@ -6,3 +6,33 @@ packageMetadata:
   tags:
   - kpt.dev/app=springboot
   shortDescription: kpt spring boot backage
+openAPI:
+  definitions:
+    io.k8s.cli.setters.replicas:
+      x-k8s-cli:
+        setter:
+          name: replicas
+          value: "5"
+          isSet: true
+      description: need at least 5 replicas
+    io.k8s.cli.substitutions.image-value:
+      x-k8s-cli:
+        substitution:
+          name: image-value
+          pattern: nginx:${image-tag}
+          values:
+          - marker: ${image-tag}
+            ref: '#/definitions/io.k8s.cli.setters.image-tag'
+      description: image name      
+    io.k8s.cli.setters.image-tag:
+      x-k8s-cli:
+        setter:
+          name: image-tag
+          value: 1.14.2
+      description: image tag  
+    io.k8s.cli.setters.service-name:
+      x-k8s-cli:
+        setter:
+          name: service-name
+          value: spring-boot
+      description: service name 

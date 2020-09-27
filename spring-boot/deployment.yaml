@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-deployment
+  labels:
+    app: spring-boot # {"$kpt-set":"service-name"}
+spec:
+  replicas: 5 # {"$kpt-set":"replicas"}
+  selector:
+    matchLabels:
+      app: spring-boot # {"$kpt-set":"service-name"}
+  template:
+    metadata:
+      labels:
+        app: spring-boot # {"$kpt-set":"service-name"}
+    spec:
+      serviceAccountName: spring-boot-service-account
+      containers:
+      - name: spring-boot # {"$kpt-set":"service-name"}
+        image: nginx:1.14.2 # {"$kpt-set":"image-value"}
+        ports:
+        - containerPort: 8080
