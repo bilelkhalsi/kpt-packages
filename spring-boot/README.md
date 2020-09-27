@@ -10,6 +10,7 @@ spring-boot
   kubectl apply --recursive -f spring-boot
 
 # SETTERS / SUBSTITUTIONS
+```
 
 kpt cfg list-setters spring-boot\ --include-subst
 spring-boot/
@@ -21,6 +22,7 @@ spring-boot/
   SUBSTITUTION        PATTERN         REFERENCES
   image-value    nginx:${image-tag}   [image-tag]
 
+```
 
 # Description
 
@@ -28,3 +30,4 @@ kpt spring boot backage
 
 # SEE ALSO
 
+https://googlecontainertools.github.io/kpt/
